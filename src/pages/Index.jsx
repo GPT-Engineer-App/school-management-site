@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Input, Text, VStack, Image, useToast } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, Input, Text, VStack, Image, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 import { FaUserCircle, FaLock, FaSchool, FaBell, FaTable } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
@@ -10,6 +10,14 @@ const Index = () => {
     Thursday: "Plastyka, Muzyka, Technika",
     Friday: "Religia, Język polski, WOS",
   });
+
+  const [user, setUser] = useState({ name: "", surname: "" });
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const handleLogin = () => {
+    setUser({ name: "Jan", surname: "Kowalski" });
+    setIsLoginOpen(false);
+  };
 
   useEffect(() => {
     const fetchSchedule = async () => {
@@ -24,7 +32,7 @@ const Index = () => {
     };
 
     fetchSchedule();
-  }, []);
+  }, [user]);
 
   return (
     <Container maxW="container.xl" p={5}>
@@ -32,12 +40,31 @@ const Index = () => {
         <Heading as="h1" size="xl" display="flex" alignItems="center">
           <FaSchool /> Librus Clone
         </Heading>
-        <Button leftIcon={<FaUserCircle />} colorScheme="teal" variant="solid">
+        <Button leftIcon={<FaUserCircle />} colorScheme="teal" variant="solid" onClick={() => setIsLoginOpen(true)}>
           Logowanie
         </Button>
       </Flex>
 
+      <Modal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Logowanie</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Input placeholder="Imię" value={user.name} onChange={(e) => setUser({ ...user, name: e.target.value })} mb={4} />
+            <Input placeholder="Nazwisko" value={user.surname} onChange={(e) => setUser({ ...user, surname: e.target.value })} />
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={handleLogin}>
+              Zaloguj
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <VStack spacing={8}>
+        <Text fontSize="lg">
+          Zalogowany jako: {user.name} {user.surname}
+        </Text>
         <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
           <Heading fontSize="xl" display="flex" alignItems="center">
             <FaBell /> Ogłoszenia
