@@ -1,7 +1,31 @@
-import { Box, Button, Container, Flex, Heading, Input, Text, VStack, Image } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, Input, Text, VStack, Image, useToast } from "@chakra-ui/react";
 import { FaUserCircle, FaLock, FaSchool, FaBell, FaTable } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [schedule, setSchedule] = useState({
+    Monday: "Matematyka, Język angielski, WF",
+    Tuesday: "Biologia, Chemia, Historia",
+    Wednesday: "Informatyka, Fizyka, Geografia",
+    Thursday: "Plastyka, Muzyka, Technika",
+    Friday: "Religia, Język polski, WOS",
+  });
+
+  useEffect(() => {
+    const fetchSchedule = async () => {
+      const newSchedule = {
+        Monday: "Matematyka, Język angielski, WF",
+        Tuesday: "Biologia, Chemia, Historia",
+        Wednesday: "Informatyka, Fizyka, Geografia",
+        Thursday: "Plastyka, Muzyka, Technika",
+        Friday: "Religia, Język polski, WOS",
+      };
+      setSchedule(newSchedule);
+    };
+
+    fetchSchedule();
+  }, []);
+
   return (
     <Container maxW="container.xl" p={5}>
       <Flex justifyContent="space-between" alignItems="center" mb={10}>
@@ -25,11 +49,11 @@ const Index = () => {
           <Heading fontSize="xl" display="flex" alignItems="center">
             <FaTable /> Plan lekcji
           </Heading>
-          <Text mt={4}>Poniedziałek: Matematyka, Język angielski, WF</Text>
-          <Text>Wtorek: Biologia, Chemia, Historia</Text>
-          <Text>Środa: Informatyka, Fizyka, Geografia</Text>
-          <Text>Czwartek: Plastyka, Muzyka, Technika</Text>
-          <Text>Piątek: Religia, Język polski, WOS</Text>
+          <Text mt={4}>Poniedziałek: {schedule.Monday}</Text>
+          <Text>Wtorek: {schedule.Tuesday}</Text>
+          <Text>Środa: {schedule.Wednesday}</Text>
+          <Text>Czwartek: {schedule.Thursday}</Text>
+          <Text>Piątek: {schedule.Friday}</Text>
         </Box>
       </VStack>
     </Container>
