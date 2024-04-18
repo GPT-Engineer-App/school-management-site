@@ -35,7 +35,7 @@ const Index = () => {
   }, [user]);
 
   return (
-    <Container maxW="container.xl" p={5}>
+    <Container maxW="container.xl" p={8}>
       <Flex justifyContent="space-between" alignItems="center" mb={10}>
         <Heading as="h1" size="xl" display="flex" alignItems="center">
           <FaSchool /> Librus Clone
@@ -46,7 +46,7 @@ const Index = () => {
       </Flex>
 
       <Modal isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)}>
-        <ModalOverlay />
+        <ModalOverlay bg="blackAlpha.300" />
         <ModalContent>
           <ModalHeader>Logowanie</ModalHeader>
           <ModalCloseButton />
@@ -65,14 +65,16 @@ const Index = () => {
         <Text fontSize="lg">
           Zalogowany jako: {user.name} {user.surname}
         </Text>
-        <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
+        <Box p={6} shadow="lg" borderWidth="1px" borderRadius="md">
           <Heading fontSize="xl" display="flex" alignItems="center">
             <FaBell /> Ogłoszenia
           </Heading>
-          <Text mt={4}>Witajcie w nowym semestrze! Nie zapomnijcie o zebraniu z rodzicami w przyszły czwartek. Pamiętajcie również o nadchodzących konkursach matematycznych oraz olimpiadzie biologicznej. Wszystkie szczegóły znajdziecie na tablicy ogłoszeń.</Text>
+          <Text mt={4} fontSize="lg">
+            Witajcie w nowym semestrze! Nie zapomnijcie o zebraniu z rodzicami w przyszły czwartek. Pamiętajcie również o nadchodzących konkursach matematycznych oraz olimpiadzie biologicznej. Wszystkie szczegóły znajdziecie na tablicy ogłoszeń.
+          </Text>
         </Box>
 
-        <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
+        <Box p={6} shadow="lg" borderWidth="1px" borderRadius="md">
           <Heading fontSize="xl" display="flex" alignItems="center">
             <FaTable /> Plan lekcji
           </Heading>
