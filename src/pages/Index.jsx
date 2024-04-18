@@ -69,7 +69,7 @@ const Index = () => {
           <Heading fontSize="xl" display="flex" alignItems="center">
             <FaBell /> Ogłoszenia
           </Heading>
-          <Text mt={4}>Witajcie w nowym semestrze! Nie zapomnijcie o zebraniu z rodzicami w przyszły czwartek.</Text>
+          <Text mt={4}>Witajcie w nowym semestrze! Nie zapomnijcie o zebraniu z rodzicami w przyszły czwartek. Pamiętajcie również o nadchodzących konkursach matematycznych oraz olimpiadzie biologicznej. Wszystkie szczegóły znajdziecie na tablicy ogłoszeń.</Text>
         </Box>
 
         <Box p={5} shadow="md" borderWidth="1px" borderRadius="md">
